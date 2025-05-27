@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>돈까스 레시피</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+  <header>돈까스 레시피</header>
+
+  <h1 id="title">레시피 제목</h1>
+
+  <div id="recipe-content" class="recipe-container"></div>
+
+  <button class="back-btn" onclick="window.history.back()">뒤로가기</button>
+  <footer>한양대 인터칼리지학과 G19</footer>
+
+  <script>
+    const recipes = {
+      "cheese": {
+        name: "피자 돈까스",
+        image: "food_picture/cheese_result.jpg",
+        topic_kr: "남은 돈까스와 치즈, 소스로 만드는 피자 돈까스",
+        ingredients_kr: "돈까스, 토마토소스, 피자 치즈, 양파, 파프리카, 옥수수",
+        steps_kr: [
+          "1. 돈까스를 팬에서 바삭하게 데운다.",
+          "2. 토마토소스를 얹는다.",
+          "3. 치즈와 토핑을 올린다.",
+          "4. 에어프라이어나 오븐에서 180°C로 5–8분 구운다.",
+          "5. 파슬리를 뿌려 완성한다."
+        ],
+        topic_en: "Leftover donkatsu with sauce and cheese for a pizza twist.",
+        ingredients_en: "Donkatsu, tomato sauce, pizza cheese, onion, bell pepper, corn",
+        steps_en: [
+          "1. Reheat donkatsu in a pan until crispy.",
+          "2. Spread tomato sauce evenly.",
+          "3. Add shredded cheese and toppings.",
+          "4. Bake at 180°C (355°F) for 5–8 min.",
+          "5. Sprinkle parsley and serve."
+        ],
+        reference: "https://wtable.co.kr/recipes/Gtfz3NQPY5D5pQAqBTGV3hok"
+      },
+      "bread": {
+        name: "돈까스 샌드위치",
+        image: "food_picture/bread_result.jpg",
+        topic_kr: "남은 돈까스를 활용한 샌드위치",
+        ingredients_kr: "돈까스, 식빵, 양상추, 토마토, 양파, 머스터드, 마요네즈, 치즈",
+        steps_kr: [
+          "1. 빵을 토스트하거나 바게트를 준비한다.",
+          "2. 돈까스를 데운다.",
+          "3. 빵에 소스를 바르고 재료를 층층이 쌓는다.",
+          "4. 반으로 잘라 서빙한다."
+        ],
+        topic_en: "Crispy donkatsu sandwich with fresh veggies and creamy sauce.",
+        ingredients_en: "Donkatsu, bread or baguette, lettuce, tomato, onion, mustard, mayo, cheese",
+        steps_en: [
+          "1. Toast bread or slice baguette.",
+          "2. Reheat donkatsu until crispy.",
+          "3. Layer ingredients and sauce.",
+          "4. Slice and serve."
+        ],
+        reference: "https://www.10000recipe.com/recipe/4492655"
+      },
+      "cabbage": {
+        name: "양배추탑 냉돈까스",
+        image: "food_picture/cabbage_result.jpg",
+        topic_kr: "신선한 채소와 함께 차갑게 먹는 냉돈까스",
+        ingredients_kr: "돈까스, 양배추, 당근, 오이, 유자 드레싱 또는 겨자소스",
+        steps_kr: [
+          "1. 채소를 채 썰어 물에 담갔다가 물기 제거.",
+          "2. 돈까스를 데운 후 식힌다.",
+          "3. 접시에 채소를 층층이 쌓고 돈까스를 올린다.",
+          "4. 드레싱을 뿌린다."
+        ],
+        topic_en: "Chilled donkatsu stacked with cabbage and mustard dressing.",
+        ingredients_en: "Donkatsu, shredded cabbage, carrot, cucumber, yuzu or mustard dressing",
+        steps_en: [
+          "1. Soak sliced veggies in cold water, drain.",
+          "2. Slice and cool reheated donkatsu.",
+          "3. Stack veggies and donkatsu on a plate.",
+          "4. Drizzle with dressing."
+        ],
+        reference: "https://www.youtube.com/watch?v=ImDNjhqa2iQ"
+      },
+      "tomato": {
+        name: "아쿠아돈까스",
+        image: "food_picture/tomato_result.jpg",
+        topic_kr: "토마토 브로스로 즐기는 따뜻한 돈까스 스튜",
+        ingredients_kr: "돈까스, 토마토, 양파, 마늘, 올리브오일, 채수, 소금, 후추",
+        steps_kr: [
+          "1. 양파, 마늘을 볶는다.",
+          "2. 토마토를 넣고 끓인다.",
+          "3. 채수 추가 후 저온으로 끓인다.",
+          "4. 돈까스를 얹어 마무리한다."
+        ],
+        topic_en: "Warm donkatsu stew with savory tomato broth.",
+        ingredients_en: "Donkatsu, tomato, onion, garlic, olive oil, vegetable stock, salt, pepper",
+        steps_en: [
+          "1. Sauté onion and garlic.",
+          "2. Add tomatoes and simmer.",
+          "3. Pour in stock and simmer on low.",
+          "4. Top with donkatsu."
+        ],
+        reference: "https://blog.naver.com/dasomammy/220956667564"
+      },
+      "kimchi": {
+        name: "돈까스 김치나베",
+        image: "food_picture/kimchi_result.jpg",
+        topic_kr: "매콤한 김치나베 스타일 돈까스 퓨전 요리",
+        ingredients_kr: "돈까스, 김치, 양파, 대파, 두부, 다시마육수, 간장, 고춧가루, 마늘",
+        steps_kr: [
+          "1. 김치, 양파, 파, 마늘, 고춧가루를 볶는다.",
+          "2. 육수 추가 후 끓인다.",
+          "3. 간장으로 간을 맞춘다.",
+          "4. 두부와 돈까스를 올린다.",
+          "5. 달걀을 깨 넣어 마무리한다."
+        ],
+        topic_en: "Spicy fusion donkatsu kimchi hotpot.",
+        ingredients_en: "Donkatsu, kimchi, onion, green onion, tofu, kelp broth, soy sauce, chili powder, garlic",
+        steps_en: [
+          "1. Sauté kimchi, onion, green onion, garlic, chili powder.",
+          "2. Add broth and bring to boil.",
+          "3. Season with soy sauce.",
+          "4. Add tofu and donkatsu.",
+          "5. Crack in egg to finish."
+        ],
+        reference: "https://www.youtube.com/watch?app=desktop&v=fpx1v9gJKTU"
+      }
+    };
+
+    const selected = localStorage.getItem("selectedIngredient");
+    const recipe = recipes[selected];
+
+    if (recipe) {
+      document.getElementById("title").textContent = recipe.name;
+      const container = document.getElementById("recipe-content");
+      const stepsKr = recipe.steps_kr.map(step => `<li>${step}</li>`).join("");
+      const stepsEn = recipe.steps_en.map(step => `<li>${step}</li>`).join("");
+
+      container.innerHTML = `
+        <img src="${recipe.image}" alt="${recipe.name}" class="recipe-img">
+
+        <div class="section-label">한국어</div>
+        <p><strong>주제:</strong> ${recipe.topic_kr}</p>
+        <p><strong>재료:</strong> ${recipe.ingredients_kr}</p>
+        <h3>레시피 설명</h3>
+        <ul>${stepsKr}</ul>
+
+        <div class="section-label">English</div>
+        <p><strong>Topic:</strong> ${recipe.topic_en}</p>
+        <p><strong>Ingredients:</strong> ${recipe.ingredients_en}</p>
+        <h3>Recipe Instructions</h3>
+        <ul>${stepsEn}</ul>
+
+        <p class="reference">
+          🔗 Reference: <a href="${recipe.reference}" target="_blank">${recipe.reference}</a>
+        </p>
+      `;
+    } else {
+      document.getElementById("recipe-content").innerHTML = "<p>선택된 재료가 없습니다.</p>";
+    }
+  </script>
+</body>
+</html>

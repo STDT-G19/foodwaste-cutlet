@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOODWASTE - 돈까스</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+  <h1>FOODWASTE - 돈까스</h1>
+  <p class="subtitle">냉장고 속 남은 재료를 골라 새로운 돈까스 요리로 바꿔보세요! (하나만 선택)</p>
+
+  <div class="ingredient-container">
+    <div class="ingredient" data-name="cheese" onclick="selectIngredient(this)">
+      <img src="food_picture/cheese.jpg" alt="치즈">
+      <span>치즈</span>
+    </div>
+    <div class="ingredient" data-name="bread" onclick="selectIngredient(this)">
+      <img src="food_picture/bread.jpg" alt="빵">
+      <span>빵</span>
+    </div>
+    <div class="ingredient" data-name="cabbage" onclick="selectIngredient(this)">
+      <img src="food_picture/cabbage.jpg" alt="양배추">
+      <span>양배추</span>
+    </div>
+    <div class="ingredient" data-name="tomato" onclick="selectIngredient(this)">
+      <img src="food_picture/tomato.jpg" alt="토마토">
+      <span>토마토</span>
+    </div>
+    <div class="ingredient" data-name="kimchi" onclick="selectIngredient(this)">
+      <img src="food_picture/kimchi.jpg" alt="김치">
+      <span>김치</span>
+    </div>
+  </div>
+
+  <button class="next-btn" onclick="goToNextPage()">다음으로</button>
+
+  <footer>한양대 인터칼리지학과 G19</footer>
+
+  <script>
+    let selectedIngredient = "";
+
+    function selectIngredient(el) {
+      document.querySelectorAll('.ingredient').forEach(i => i.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedIngredient = el.dataset.name;
+      document.querySelector('.next-btn').classList.add('active');
+    }
+
+    function goToNextPage() {
+      if (!selectedIngredient) return;
+      localStorage.setItem('selectedIngredient', selectedIngredient);
+      window.location.href = 'next_cutlet.html';
+    }
+  </script>
+</body>
+</html>
